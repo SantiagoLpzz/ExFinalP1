@@ -1,0 +1,51 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Registrar info de pelicula
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-input [(ngModel)]="n1.value" label="Nombre  de la pelicula"></ion-input>
+  <ion-input [(ngModel)]="fecha.value" label="Año de lanzamiento" type="datetime-local"></ion-input>
+  <ion-input [(ngModel)]="n2.value" label="Nombrel productor"></ion-input>
+  <ion-input [(ngModel)]="n3.value" label="Casa productora"></ion-input>
+  <ion-input [(ngModel)]="prota.value" label="Protagonista"></ion-input>
+  <button (click)="showInfo()">Registrar</button>
+  <br>
+  <div *ngFor="let informacion of info">
+    <h2>Nombre pelicula: {{informacion.n1}}</h2>
+    <h2>Año lanzamiento: {{informacion.fecha}}</h2>
+    <h2>Nombre productor: {{informacion.n2}}</h2>
+    <h2>Casa productora: {{informacion.n3}}</h2>
+    <h2>Protagonista: {{informacion.prota}}</h2>
+  </div>
+  <br>
+  <div>
+    Link del componente formulario (no se pudo hacer el formukario en el componente):
+    <br>
+    <ion-item routerLink="/formulario">Go to Formulario</ion-item>
+  </div>
+
+  <br><br><br>
+  <h1>Segunda parte del examen:</h1>
+  <br>
+  <ng-container *ngIf="quote; else loading">
+    <ion-card>
+        <ion-card-header>
+          <ion-card-title> {{ quote.quote }} </ion-card-title>
+        </ion-card-header>
+        <ion-card-header>
+          <ion-card-title> - {{ author.author }} </ion-card-title>
+        </ion-card-header>
+    </ion-card>
+  </ng-container>
+
+  <ng-template #loading>
+    <ion-spinner name="crescent"></ion-spinner>
+  </ng-template>
+
+
+</ion-content>
